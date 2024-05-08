@@ -6,7 +6,8 @@ public class Dog extends Pet {
 
     private Size size;
 
-    public Dog() {}
+    public Dog() {
+    }
 
     public Dog(Size size) {
         this.size = size;

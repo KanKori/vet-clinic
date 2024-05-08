@@ -22,6 +22,7 @@ public class Sandbox {
 
         };
 
+        //compare dog size
         Arrays.sort(dogs, new Comparator<Dog>() {
             @Override
             public int compare(Dog dog1, Dog dog2) {
@@ -41,6 +42,7 @@ public class Sandbox {
                 (Cat) petService.buildPet("cat")
         };
 
+        //compare cat age
         Arrays.sort(cats, new Comparator<Cat>() {
             @Override
             public int compare(Cat cat1, Cat cat2) {
@@ -50,6 +52,17 @@ public class Sandbox {
 
         for (Cat cat : cats) {
             System.out.println(cat.getAge());
+        }
+
+        Arrays.sort(cats, new Comparator<Cat>() {
+            @Override
+            public int compare(Cat cat1, Cat cat2) {
+                return cat1.getHealthState().getValue() - cat2.getHealthState().getValue();
+            }
+        });
+
+        for (Cat cat : cats) {
+            System.out.println(cat.getHealthState());
         }
 
     }

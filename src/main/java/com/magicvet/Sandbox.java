@@ -1,6 +1,8 @@
 package main.java.com.magicvet;
 
+import main.java.com.magicvet.model.Cat;
 import main.java.com.magicvet.model.Dog;
+import main.java.com.magicvet.service.PetService;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -8,6 +10,8 @@ import java.util.Comparator;
 public class Sandbox {
 
     public static void main(String[] args) {
+
+        PetService petService = new PetService();
 
         Dog[] dogs = {
                 new Dog(Dog.Size.XL),
@@ -27,6 +31,25 @@ public class Sandbox {
 
         for (Dog dog : dogs) {
             System.out.println(dog.getSize());
+        }
+
+        Cat[] cats = {
+                (Cat) petService.buildPet("cat"),
+                (Cat) petService.buildPet("cat"),
+                (Cat) petService.buildPet("cat"),
+                (Cat) petService.buildPet("cat"),
+                (Cat) petService.buildPet("cat")
+        };
+
+        Arrays.sort(cats, new Comparator<Cat>() {
+            @Override
+            public int compare(Cat cat1, Cat cat2) {
+                return cat1.getAge() - cat2.getAge();
+            }
+        });
+
+        for (Cat cat : cats) {
+            System.out.println(cat.getAge());
         }
 
     }

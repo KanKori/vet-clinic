@@ -1,6 +1,7 @@
 package main.java.com.magicvet;
 
 import main.java.com.magicvet.model.Cat;
+import main.java.com.magicvet.model.Client;
 import main.java.com.magicvet.model.Dog;
 import main.java.com.magicvet.service.PetService;
 
@@ -11,6 +12,7 @@ public class Sandbox {
 
     public static void main(String[] args) {
 
+        System.out.println(new Client());
         System.out.println(new Cat());
 
         PetService petService = new PetService();

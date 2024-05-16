@@ -11,6 +11,8 @@ public class Sandbox {
 
     public static void main(String[] args) {
 
+        System.out.println(new Cat());
+
         PetService petService = new PetService();
 
         Dog[] dogs = {

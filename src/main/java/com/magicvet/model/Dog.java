@@ -2,6 +2,12 @@ package main.java.com.magicvet.model;
 
 import java.util.Objects;
 
+/**
+ * Class that describes Dog model
+ * @author Anastasiia Voshchenko
+ * @since 2024
+ * @version %I%, %G%
+ */
 public class Dog extends Pet {
 
     private Size size;

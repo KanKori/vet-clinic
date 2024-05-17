@@ -5,11 +5,21 @@ import main.java.com.magicvet.model.Cat;
 import main.java.com.magicvet.model.Dog;
 import main.java.com.magicvet.model.Pet;
 
+/**
+ * Class for {@link Pet} service
+ * @author Anastasiia Voshchenko
+ * @since 2024
+ * @version %I%, %G%
+ */
 public class PetService {
 
     private static final String DOG_TYPE = "dog";
     private static final String CAT_TYPE = "cat";
 
+    /**
+     * Method for registration a new pet
+     * @return new {@link Pet} object
+     */
     public Pet registerNewPet() {
 
         Pet pet = null;
@@ -30,6 +40,11 @@ public class PetService {
         return pet;
     }
 
+    /**
+     * Method for building a new pet
+     * @param type type of animal to be created
+     * @return new {@link Pet} object
+     */
     public Pet buildPet(String type) {
 
         Pet pet = type.equals(CAT_TYPE) ? new Cat() : new Dog();

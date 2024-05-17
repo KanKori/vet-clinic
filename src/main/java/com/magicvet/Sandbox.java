@@ -8,6 +8,12 @@ import main.java.com.magicvet.service.PetService;
 import java.util.Arrays;
 import java.util.Comparator;
 
+/**
+ * Class for testing
+ * @author Anastasiia Voshchenko
+ * @since 2024
+ * @version %I%, %G%
+ */
 public class Sandbox {
 
     public static void main(String[] args) {

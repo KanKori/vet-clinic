@@ -9,6 +9,12 @@ import main.java.com.magicvet.service.PetService;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Class to run the application
+ * @author Anastasiia Voshchenko
+ * @since 2024
+ * @version %I%, %G%
+ */
 public class ApplicationRunner {
 
     private final ClientService clientService = new ClientService();
@@ -16,6 +22,9 @@ public class ApplicationRunner {
 
     private static final String CHOICE_PATTERN = "[yn]";
 
+    /**
+     * Main method to run the app
+     */
     public void run() {
         if (Authenticator.auth()) {
             Client client = clientService.registerNewClient();
@@ -40,7 +49,10 @@ public class ApplicationRunner {
         }
     }
 
-
+    /**
+     * Check does user want to add a pet
+     * @return does user want to add a pet
+     */
     public static boolean ifUserWantsToAddAPet() {
 
         System.out.println("Do you want to add a pet? (y/n): ");
@@ -55,10 +67,15 @@ public class ApplicationRunner {
 
     }
 
-    public static boolean choiceValid(String name) {
+    /**
+     * Validating the user's choice
+     * @param choice user's choice
+     * @return is user's choice valid
+     */
+    public static boolean choiceValid(String choice) {
 
         Pattern pattern = Pattern.compile(CHOICE_PATTERN);
-        Matcher matcher = pattern.matcher(name);
+        Matcher matcher = pattern.matcher(choice);
 
         return matcher.matches();
 

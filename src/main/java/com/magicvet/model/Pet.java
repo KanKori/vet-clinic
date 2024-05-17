@@ -4,6 +4,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+/**
+ * Class that describes Pet model
+ * @author Anastasiia Voshchenko
+ * @since 2024
+ * @version %I%, %G%
+ */
 public abstract class Pet {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");

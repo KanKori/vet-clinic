@@ -25,14 +25,17 @@ public class Dog extends Pet {
 
     @Override
     public String toString() {
+
         return "Pet {"
-                + "\n\ttype = " + getType()
+                + "type = " + getType()
                 + ", sex = " + getSex()
                 + ", age = " + getAge()
                 + ", size = " + size
                 + ", name = " + getName()
-                + ",\n\townerName = " + getOwnerName()
-                + "\n}";
+                + ", ownerName = " + getOwnerName()
+                + ", registrationDate = " + getRegistrationDate().format(FORMATTER)
+                + "}";
+
     }
 
     @Override

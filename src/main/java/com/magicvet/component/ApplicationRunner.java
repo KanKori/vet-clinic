@@ -18,67 +18,67 @@ import java.util.regex.Pattern;
 public class ApplicationRunner {
 
     private final ClientService clientService = new ClientService();
-    private final PetService  petService = new PetService();
-
-    private static final String CHOICE_PATTERN = "[yn]";
+    private final PetService petService = new PetService();
 
     /**
      * Main method to run the app
      */
     public void run() {
+
         if (Authenticator.auth()) {
+
             Client client = clientService.registerNewClient();
 
             if (client != null) {
-                if(ifUserWantsToAddAPet()) {
 
-                    System.out.println("Adding a new pet");
-
-                    Pet pet = petService.registerNewPet();
-
-                    if (pet != null) {
-
-                        client.setPet(pet);
-                        pet.setOwnerName(client.getFirstName() + " " + client.getLastName());
-                        System.out.println("Pet has been added.");
-                    }
-                }
-
+                registerPet(client);
                 System.out.println(client);
+
             }
+
         }
-    }
-
-    /**
-     * Check does user want to add a pet
-     * @return does user want to add a pet
-     */
-    public static boolean ifUserWantsToAddAPet() {
-
-        System.out.println("Do you want to add a pet? (y/n): ");
-        String userChoice = Main.SCANNER.nextLine();
-
-        while (!choiceValid(userChoice)) {
-            System.out.println("Incorrect input. Please, try again (y/n): ");
-            userChoice = Main.SCANNER.nextLine();
-        }
-
-        return userChoice.equals("y");
 
     }
 
     /**
-     * Validating the user's choice
-     * @param choice user's choice
-     * @return is user's choice valid
+     * Method of registering a new pet
+     * @param client whose pet is that
      */
-    public static boolean choiceValid(String choice) {
+    private void registerPet(Client client) {
 
-        Pattern pattern = Pattern.compile(CHOICE_PATTERN);
-        Matcher matcher = pattern.matcher(choice);
+        boolean continueAddPets = true;
 
-        return matcher.matches();
+        while (continueAddPets) {
+
+            addPet(client);
+
+            System.out.println("Do you want to add more pets for the current client? (y/n): ");
+            String answer = Main.SCANNER.nextLine();
+
+            if ("n".equals(answer)) {
+                continueAddPets = false;
+            }
+
+        }
 
     }
 
+    /**
+     * Method of adding a new pet
+     * @param client whose pet is that
+     */
+    private void addPet(Client client) {
+
+        System.out.println("Adding a new pet");
+
+        Pet pet = petService.registerNewPet();
+
+        if (pet != null) {
+
+            client.addPet(pet);
+            pet.setOwnerName(client.getFirstName() + " " + client.getLastName());
+            System.out.println("Pet has been added.");
+        }
+
+    }
 }

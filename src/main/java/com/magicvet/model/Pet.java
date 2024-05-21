@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public abstract class Pet {
 
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+    static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
 
     private String type;
     private String sex;
@@ -32,14 +32,16 @@ public abstract class Pet {
 
     @Override
     public String toString() {
+
         return "Pet {"
-                + "\n\ttype = " + type
+                + "type = " + type
                 + ", sex = " + sex
                 + ", age = " + age
                 + ", name = " + name
-                + ",\n\townerName = " + ownerName
-                + ",\n\tregistrationDate = " + registrationDate.format(FORMATTER)
-                + "\n}";
+                + ", ownerName = " + ownerName
+                + ", registrationDate = " + registrationDate.format(FORMATTER)
+                + "}";
+
     }
 
     @Override
@@ -53,6 +55,10 @@ public abstract class Pet {
     @Override
     public int hashCode() {
         return Objects.hash(type, sex, age, name, ownerName);
+    }
+
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
     }
 
     public String getType() {

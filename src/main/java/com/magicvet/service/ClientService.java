@@ -58,9 +58,12 @@ public class ClientService {
             lastName = Main.SCANNER.nextLine();
         }
 
+        System.out.print("Location: ");
+        String location = Main.SCANNER.nextLine();
+
         if (emailValid(email) && nameValid(firstName) && nameValid(lastName)) {
 
-            client = buildClient(email, firstName, lastName);
+            client = buildClient(email, firstName, lastName, location);
 
             System.out.println("New client: "
                     + client.getFirstName() + " "
@@ -84,13 +87,14 @@ public class ClientService {
      * @param lastName client's last name
      * @return new {@link Client} object
      */
-    public static Client buildClient(String email, String firstName, String lastName) {
+    public static Client buildClient(String email, String firstName, String lastName, String location) {
 
         Client client = new Client();
 
         client.setEmail(email);
         client.setFirstName(firstName);
         client.setLastName(lastName);
+        client.setLocation(Client.Location.valueOf(location));
 
         return client;
     }

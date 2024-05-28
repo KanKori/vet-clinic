@@ -20,6 +20,7 @@ public class Client {
     private String lastName;
     private String email;
     private List<Pet> pets = new ArrayList<>();
+    private Location location;
 
     private final LocalDateTime registrationDate = LocalDateTime.now();
 
@@ -30,6 +31,7 @@ public class Client {
                 + "\n\tfirstName = " + firstName
                 + ", lastName = " + lastName
                 + ", email = " + email
+                + ", location = " + location
                 + ",\n\tregistrationDate = " + registrationDate.format(FORMATTER)
                 + ",\n\tpets = " + pets
                 + "\n}";
@@ -89,5 +91,17 @@ public class Client {
 
     public void addPet(Pet pet) {
         pets.add(pet);
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public enum Location {
+        KYIV, LVIV, ODESA
     }
 }

@@ -87,14 +87,28 @@ public class ClientService {
      * @param lastName client's last name
      * @return new {@link Client} object
      */
-    public static Client buildClient(String email, String firstName, String lastName, String location) {
+    public static Client buildClient(String email, String firstName, String lastName, String locationInput) {
 
         Client client = new Client();
 
         client.setEmail(email);
         client.setFirstName(firstName);
         client.setLastName(lastName);
-        client.setLocation(Client.Location.valueOf(location));
+
+        Client.Location location;
+        try {
+
+            location = Client.Location.valueOf(locationInput);
+
+        } catch (IllegalArgumentException e) {
+
+            location =  Client.Location.UNKNOWN;
+            System.out.println("Unable to parse value '" + locationInput
+                    + "'. Using default value: " + Client.Location.UNKNOWN);
+
+        }
+
+        client.setLocation(location);
 
         return client;
     }

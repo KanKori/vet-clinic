@@ -111,6 +111,7 @@ public abstract class Pet {
 
     public enum HealthState {
 
+        UNKNOWN(0),
         GOOD(1),
         BAD(2),
         CRITICAL(3),

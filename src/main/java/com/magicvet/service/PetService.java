@@ -60,13 +60,38 @@ public class PetService {
         pet.setSex(Main.SCANNER.nextLine());
 
         System.out.println("Health state (GOOD, BAD, CRITICAL, EXTRA_CRITICAL): ");
-        String healthState = Main.SCANNER.nextLine();
-        pet.setHealthState(Pet.HealthState.valueOf(healthState));
+        Pet.HealthState healthState;
+        String healthStateInput = Main.SCANNER.nextLine();
+        try {
+
+            healthState = Pet.HealthState.valueOf(healthStateInput);
+
+        } catch (IllegalArgumentException e) {
+
+            healthState = Pet.HealthState.UNKNOWN;
+            System.out.println("Unable to parse value '" + healthStateInput
+                    + "'. Using default value: " + Pet.HealthState.UNKNOWN);
+        }
+
+            pet.setHealthState(healthState);
 
         if (type.equals(DOG_TYPE)) {
             System.out.println("Size (XS / S / M / L / XL): ");
-            String size = Main.SCANNER.nextLine();
-            ((Dog) pet).setSize(Dog.Size.fromString(size));
+            Dog.Size size;
+            String sizeInput = Main.SCANNER.nextLine();
+            try {
+
+                size = Dog.Size.valueOf(sizeInput);
+
+            } catch (IllegalArgumentException e) {
+
+                size = Dog.Size.UNKNOWN;
+                System.out.println("Unable to parse value '" + sizeInput
+                        + "'. Using default value: " + Dog.Size.UNKNOWN);
+
+            }
+
+            ((Dog) pet).setSize(size);
         }
 
         return pet;

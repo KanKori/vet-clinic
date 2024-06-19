@@ -2,8 +2,8 @@ package main.java.com.magicvet.service;
 
 import main.java.com.magicvet.Main;
 import main.java.com.magicvet.model.Client;
-import main.java.com.magicvet.model.Pet;
 
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,7 +29,7 @@ public class ClientService {
      * Method for registration a new client
      * @return new {@link Client} object
      */
-    public Client registerNewClient() {
+    public Optional<Client> registerNewClient() {
 
         Client client = null;
 
@@ -76,7 +76,7 @@ public class ClientService {
 
         }
 
-        return client;
+        return Optional.ofNullable(client);
 
     }
 

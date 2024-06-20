@@ -101,6 +101,11 @@ public class EntityRegister {
 
     }
 
+    /**
+     * A method that verifies the repetition of an action. Contains recursion
+     * @param message message for user
+     * @return true if user wants to repeat an action, otherwise false
+     */
     private boolean verifyRepeating(String message) {
 
         System.out.println(message);

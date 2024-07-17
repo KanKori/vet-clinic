@@ -1,9 +1,10 @@
 package main.java.com.magicvet.service;
 
-import main.java.com.magicvet.Main;
 import main.java.com.magicvet.model.Cat;
 import main.java.com.magicvet.model.Dog;
 import main.java.com.magicvet.model.Pet;
+
+import static main.java.com.magicvet.Main.*;
 
 /**
  * Class for {@link Pet} service
@@ -25,7 +26,7 @@ public class PetService {
         Pet pet = null;
 
         System.out.println("Type (dog / cat): ");
-        String type = Main.SCANNER.nextLine();
+        String type = SCANNER.nextLine();
 
         if (DOG_TYPE.equals(type) || CAT_TYPE.equals(type)) {
 
@@ -51,17 +52,17 @@ public class PetService {
         pet.setType(type);
 
         System.out.println("Age: ");
-        pet.setAge(Integer.parseInt(Main.SCANNER.nextLine()));
+        pet.setAge(Integer.parseInt(SCANNER.nextLine()));
 
         System.out.println("Name: ");
-        pet.setName(Main.SCANNER.nextLine());
+        pet.setName(SCANNER.nextLine());
 
         System.out.println("Sex (male / female): ");
-        pet.setSex(Main.SCANNER.nextLine());
+        pet.setSex(SCANNER.nextLine());
 
         System.out.println("Health state (GOOD, BAD, CRITICAL, EXTRA_CRITICAL): ");
         Pet.HealthState healthState;
-        String healthStateInput = Main.SCANNER.nextLine();
+        String healthStateInput = SCANNER.nextLine();
         try {
 
             healthState = Pet.HealthState.valueOf(healthStateInput);
@@ -78,7 +79,7 @@ public class PetService {
         if (type.equals(DOG_TYPE)) {
             System.out.println("Size (XS / S / M / L / XL): ");
             Dog.Size size;
-            String sizeInput = Main.SCANNER.nextLine();
+            String sizeInput = SCANNER.nextLine();
             try {
 
                 size = Dog.Size.valueOf(sizeInput);
